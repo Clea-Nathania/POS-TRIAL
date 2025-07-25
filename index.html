@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Clea's Shop - Transaction Software</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="logo">
+        <div class="logo-icon"></div>
+        <h1 class="shop-title">Clea's Shop</h1>
+      </div>
+    </div>
+
+    <!-- Login/Setup Page -->
+    <div class="login-page" id="loginPage">
+      <div class="menu-setup">
+        <h2>Setup Your Menu</h2>
+        <div class="menu-input-group">
+          <input type="text" id="menuName" placeholder="Menu Name" />
+          <input type="number" id="menuPrice" placeholder="Price (Rp)" />
+          <button class="add-menu-btn" onclick="addMenuItem()">Add Menu</button>
+        </div>
+        <div class="menu-list" id="menuList">
+          <p>No menu items added yet. Add some menu items to get started!</p>
+        </div>
+        <button class="start-pos-btn" onclick="startPOS()">Start POS System</button>
+      </div>
+    </div>
+
+    <!-- Main POS Interface -->
+    <div class="pos-interface" id="posInterface">
+      <div class="pos-main">
+        <div class="menu-section">
+          <div class="menu-grid" id="menuGrid"></div>
+        </div>
+
+        <div class="right-panel">
+          <div class="panel-header">
+            <button class="history-btn" onclick="showHistory()">◀ History</button>
+          </div>
+
+          <div class="transaction-summary">
+            <strong>Total Transaction: Rp.<span id="totalTransaction">0</span></strong>
+          </div>
+
+          <div class="order-list" id="orderList"></div>
+
+          <div class="control-section">
+            <label>Payment methods:</label>
+            <select id="paymentMethod">
+              <option value="">Select payment method</option>
+              <option value="cash">Cash</option>
+              <option value="debit-card">Debit Card</option>
+              <option value="e-wallet">E-Wallet</option>
+            </select>
+          </div>
+
+          <div class="control-section">
+            <label>Status:</label>
+            <select id="status">
+              <option value="">Select status</option>
+              <option value="done">Done</option>
+              <option value="not-yet-done">Not Yet Done</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+          </div>
+
+          <div class="action-buttons">
+            <button class="done-btn" onclick="saveTransaction()">Done</button>
+            <button class="clear-btn" onclick="clearTransaction()">Clear</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- History Page -->
+    <div class="history-page" id="historyPage">
+      <div class="history-header">
+        <button class="back-btn" onclick="backToPOS()">◀</button>
+        <h2>History</h2>
+      </div>
+
+      <div class="date-filter">
+        <input type="date" id="filterDate" />
+        <button class="filter-btn" onclick="filterByDate()">Filter by Date</button>
+        <button class="filter-btn" onclick="showAllHistory()">Show All</button>
+      </div>
+
+      <div class="history-table">
+        <div class="table-header">
+          <div>Number</div>
+          <div>Order</div>
+          <div>Total</div>
+          <div>Date</div>
+          <div>Time</div>
+          <div>Payments</div>
+          <div>Status</div>
+        </div>
+        <div id="historyTableBody"></div>
+      </div>
+
+      <div class="summary-boxes">
+        <div class="summary-box">
+          <h4>Total Orders: <span id="totalOrders">0</span></h4>
+        </div>
+        <div class="summary-box">
+          <h4>Sum: Rp.<span id="totalSum">0</span></h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
